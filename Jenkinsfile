@@ -27,8 +27,6 @@ node {
         sh "docker login -u ${env.DOCKERHUB_USERNAME} -p ${env.DOCKERHUB_PASSWORD} -e demo@mesosphere.com"
         sh "docker push al3kvny/vny:${gitCommit()}"
     }
-}
-
   // Deploy
     stage 'Deploy'
 
@@ -40,3 +38,5 @@ node {
         appId: 'nginx-mesosphere-al3kvny',
         docker: "al3kvny/vny:${gitCommit()}".toString()
     )
+}
+
